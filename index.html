@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LeetMetric</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@500;600&display=swap"
+        rel="stylesheet">
+
+</head>
+<body>
+    <div class="container glass">
+        <!-- Heading -->
+        <div class="typing-wrapper">
+            <h1 class="typing-text gradient-text">LeetMetric</h1>
+        </div>
+        <!-- Theme Toggle -->
+        <div class="theme-toggle">
+            <label class="switch">
+                <input type="checkbox" id="theme-switch" />
+                <span class="slider"></span>
+            </label>
+            <span class="mode-label">Dark Mode</span>
+        </div>
+
+        <!-- User Input Section -->
+        <div class="user-container">
+            <p>Enter Your Username Below:</p>
+            <div class="user-input-container">
+                <input class="glass-glow skeleton" type="text" placeholder="Enter your username here" id="user-input" />
+                <button id="search-button" class="glow-border bounce">Search</button>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-container fade-in-up">
+            <div class="progress">
+                <div class="progess-item card-3d">
+                    <div class="circle" id="easy-circle" style="--progress-degree: 0%">
+                        <span id="easy-level">0</span>
+                    </div>
+                    <p>Easy</p>
+                </div>
+
+                <div class="progess-item card-3d">
+                    <div class="circle" id="medium-circle" style="--progress-degree: 0%">
+                        <span id="medium-level">0</span>
+                    </div>
+                    <p>Medium</p>
+                </div>
+
+                <div class="progess-item card-3d">
+                    <div class="circle" id="hard-circle" style="--progress-degree: 0%">
+                        <span id="hard-level">0</span>
+                    </div>
+                    <p>Hard</p>
+                </div>
+            </div>
+
+            <div class="stats-cards">
+                <!-- Dynamic stats info from JS can be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Toggle Script -->
+    <script>
+        const toggle = document.getElementById("theme-switch");
+        const body = document.body;
+        const modeLabel = document.querySelector(".mode-label");
+
+        // Load saved theme
+        const currentTheme = localStorage.getItem("theme");
+        if (currentTheme === "dark") {
+            body.classList.add("dark");
+            toggle.checked = true;
+            modeLabel.textContent = "Light Mode";
+        }
+
+        toggle.addEventListener("change", () => {
+            if (toggle.checked) {
+                body.classList.add("dark");
+                localStorage.setItem("theme", "dark");
+                modeLabel.textContent = "Light Mode";
+            } else {
+                body.classList.remove("dark");
+                localStorage.setItem("theme", "light");
+                modeLabel.textContent = "Dark Mode";
+            }
+        });
+    </script>
+
+    <!-- Your script for stats functionality -->
+    <script src="script.js"></script>
+</body>
+
+</html>
